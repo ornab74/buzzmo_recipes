@@ -1,0 +1,17 @@
+# Buzzmoo Cooks direct runtime pins.
+# Python: 3.10-3.13 recommended. Python 3.14 may work where wheels exist.
+#
+# OS tools are installed by install scripts, not pip:
+# - ffmpeg / ffplay
+# - git
+# - tkinter system package on Linux when the distro splits it out
+
+cryptography==46.0.7
+streamlink==8.3.0
+openai-whisper==20250625
+
+# LiteRT-LM is currently published through Google AI Edge nightly packages.
+# The API wheel imports as `litert_lm`. Wheels are available for Linux x86_64,
+# Linux aarch64, and macOS arm64 at this pinned build.
+litert-lm-api-nightly==0.11.0.dev20260422; (platform_system == "Linux" and (platform_machine == "x86_64" or platform_machine == "aarch64")) or (platform_system == "Darwin" and platform_machine == "arm64")
+litert-lm-nightly==0.11.0.dev20260422; platform_system != "Windows"
